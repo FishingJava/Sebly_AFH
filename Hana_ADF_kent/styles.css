@@ -1,109 +1,631 @@
-/* src/main/resources/static/css/styles.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
+/* =========================================================
+   Harmony Cottage Adult Family Home
+   Main stylesheet
+   This file styles the homepage layout, colors, buttons,
+   cards, forms, gallery, and responsive behavior.
+   ========================================================= */
+
+/* ---------- Color system and reusable variables ---------- */
+:root {
+    --bg: #f7f4ef;
+    --surface: #fffdf9;
+    --surface-2: #f2ebe1;
+    --ink: #2f3a34;
+    --muted: #65736c;
+    --brand: #7a5c3e;
+    --brand-dark: #5f452c;
+    --accent: #b67d4a;
+    --accent-soft: #efe2d2;
+    --line: #dfd3c4;
+    --success: #476b57;
+    --shadow: 0 18px 40px rgba(63, 45, 29, 0.10);
+    --radius: 22px;
+    --max: 1180px;
 }
 
-/* Navbar */
-.navbar {
-    background: #003366;
-    padding: 1rem 0;
+/* ---------- Reset and base styles ---------- */
+* {
+    box-sizing: border-box;
 }
-.nav-container {
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    color: var(--ink);
+    background: linear-gradient(180deg, #fbf8f3 0%, #f6f1e9 100%);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+}
+
+/* ---------- Shared layout container ---------- */
+.container {
+    width: min(92%, var(--max));
+    margin: 0 auto;
+}
+
+/* ---------- Top contact bar ---------- */
+.topbar {
+    background: rgba(47, 58, 52, 0.94);
+    color: #f9f5ef;
+    font-size: 0.95rem;
+}
+
+.topbar-inner {
     display: flex;
+    gap: 1rem;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
-    margin: auto;
+    padding: 0.65rem 0;
+    flex-wrap: wrap;
 }
+
+/* ---------- Sticky site header ---------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(14px);
+    background: rgba(251, 248, 243, 0.88);
+    border-bottom: 1px solid rgba(223, 211, 196, 0.8);
+}
+
+.nav {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    color: #fff;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+/* ---------- Brand/logo area ---------- */
+/* ---------- Brand/logo area ---------- */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.95rem;
     text-decoration: none;
-    font-weight: bold;
+    min-width: 0;
 }
 
-.logo-img {
-    width: 56px;
-    height: 56px;
+.brand-mark {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 6px;
+    border: 1px solid var(--line);
+}
+
+/* Header logo image */
+.brand-mark img {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    border-radius: 50%;
-    background: white;
-    padding: 4px;
+    display: block;
 }
 
-.logo-text {
-    font-size: 1.2rem;
+.brand-text strong {
+    display: block;
+    font-size: 1.05rem;
     line-height: 1.2;
 }
+
+.brand-text span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+/* ---------- Navigation links ---------- */
 .nav-links {
-    list-style: none;
     display: flex;
-    gap: 1.5rem;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
 }
+
 .nav-links a {
-    color: #fff;
     text-decoration: none;
-    padding: 0.5rem;
-}
-.nav-links a.active,
-.nav-links a:hover {
-    background: #0055aa;
-    border-radius: 5px;
+    color: var(--ink);
+    font-weight: 600;
 }
 
-/* Hero Section */
+.nav-cta {
+    text-decoration: none;
+    background: var(--brand);
+    color: white;
+    padding: 0.8rem 1.1rem;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+/* ---------- Hero section ---------- */
 .hero {
-    background: linear-gradient(to right, #0055aa, #0099cc);
-    color: white;
-    padding: 4rem 2rem;
-    text-align: center;
-}
-.hero h1 {
-    font-size: 2.5rem;
-}
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-.btn-primary {
-    background: #ffcc00;
-    color: #003366;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-}
-.btn-primary:hover {
-    background: #ffdb4d;
+    padding: 4.6rem 0 3.6rem;
 }
 
-/* Features Section */
-.features {
-    display: flex;
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
     gap: 2rem;
-    padding: 3rem 2rem;
-    background: #f4f4f4;
-}
-.feature {
-    flex: 1;
-    text-align: center;
-    padding: 1rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-}
-.feature h2 {
-    color: #003366;
+    align-items: center;
 }
 
-/* Footer */
-footer {
-    background: #003366;
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--brand-dark);
+    font-weight: 700;
+    font-size: 0.92rem;
+    margin-bottom: 1rem;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.15;
+    margin: 0 0 1rem;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 5vw, 4.4rem);
+}
+
+h2 {
+    font-size: clamp(1.7rem, 3vw, 2.7rem);
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+.hero-copy p {
+    font-size: 1.08rem;
+    color: var(--muted);
+    max-width: 60ch;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.6rem 0 1.7rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 1.25rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background: var(--brand);
     color: white;
-    text-align: center;
-    padding: 1rem 0;
+    box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--brand-dark);
+    border-color: var(--line);
+}
+
+/* ---------- Hero highlight stats ---------- */
+.mini-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.4rem;
+}
+
+.stat {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 1rem;
+}
+
+.stat strong {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+/* ---------- Hero image card ---------- */
+.hero-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    padding: 1.3rem;
+    box-shadow: var(--shadow);
+}
+
+.photo-frame {
+    aspect-ratio: 4 / 4.6;
+    border-radius: 24px;
+    background:
+        linear-gradient(rgba(71, 107, 87, 0.16), rgba(71, 107, 87, 0.16)),
+        url('images/comm-living.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #d7c5b3, #f5ede2);
+    position: relative;
+    overflow: hidden;
+}
+
+.floating-note {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 18px;
+    padding: 0.95rem 1rem;
+    max-width: 220px;
+    box-shadow: var(--shadow);
+}
+
+.floating-note strong {
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+/* ---------- General section spacing ---------- */
+section {
+    padding: 2.2rem 0;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.section-head p {
+    color: var(--muted);
+    margin: 0;
+    max-width: 60ch;
+}
+
+/* ---------- Reusable grid layouts ---------- */
+.grid-3,
+.grid-4,
+.gallery-grid {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* ---------- Reusable cards ---------- */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.35rem;
+    box-shadow: 0 10px 24px rgba(63, 45, 29, 0.05);
+}
+
+.card p,
+.split-copy p,
+.contact-panel p,
+.footer p {
+    color: var(--muted);
+}
+
+.icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: var(--accent-soft);
+    color: var(--brand-dark);
+    font-weight: 800;
+    margin-bottom: 0.9rem;
+}
+
+/* ---------- About split layout ---------- */
+.split {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 1.4rem;
+    align-items: stretch;
+}
+
+.split-visual {
+    min-height: 100%;
+    border-radius: 28px;
+    background:
+        linear-gradient(rgba(122, 92, 62, 0.12), rgba(122, 92, 62, 0.12)),
+        url('images/comm-living.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #d6cabd, #f8f4ef);
+    border: 1px solid var(--line);
+    min-height: 420px;
+}
+
+/* ---------- About checklist ---------- */
+.checklist {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.1rem;
+}
+
+.check {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 0.85rem 1rem;
+}
+
+.check b {
+    color: var(--success);
+}
+
+/* ---------- Room cards ---------- */
+.room-card {
+    overflow: hidden;
+    padding: 0;
+}
+
+.room-photo {
+    height: 190px;
+    background: linear-gradient(135deg, #dfd1c4, #f8f0e7);
+    border-bottom: 1px solid var(--line);
+}
+
+.room-photo.one {
+    background: linear-gradient(rgba(71, 107, 87, .10), rgba(71, 107, 87, .10)),
+        url('images/kitchen.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #dfd1c4, #f8f0e7);
+}
+
+.room-photo.two {
+    background: linear-gradient(rgba(122, 92, 62, .10), rgba(122, 92, 62, .10)),
+        url('images/Shower.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #d9cbbd, #f6ede3);
+}
+
+.room-photo.three {
+    background: linear-gradient(rgba(182, 125, 74, .10), rgba(182, 125, 74, .10)),
+        url('images/shower.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #e7dbd0, #faf5ef);
+}
+
+.room-body {
+    padding: 1.2rem;
+}
+
+/* ---------- Gallery section ---------- */
+.gallery-item {
+    aspect-ratio: 1.1 / 1;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: linear-gradient(135deg, #ded0c2, #f7efe7);
+    box-shadow: 0 10px 24px rgba(63, 45, 29, 0.05);
+}
+
+.gallery-item:nth-child(1) {
+    background: url('images/comm-living.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #ded0c2, #f7efe7);
+}
+
+.gallery-item:nth-child(2) {
+    background: url('images/gallery-2.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #ded0c2, #f7efe7);
+}
+
+.gallery-item:nth-child(3) {
+    background: url('images/gallery-3.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #ded0c2, #f7efe7);
+}
+
+.gallery-item:nth-child(4) {
+    background: url('images/gallery-4.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #ded0c2, #f7efe7);
+}
+
+.gallery-item:nth-child(5) {
+    background: url('images/gallery-5.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #ded0c2, #f7efe7);
+}
+
+.gallery-item:nth-child(6) {
+    background: url('images/gallery-6.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #ded0c2, #f7efe7);
+}
+
+/* ---------- Contact section layout ---------- */
+.contact-wrap {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 1.2rem;
+    align-items: stretch;
+}
+
+.contact-panel {
+    background: linear-gradient(180deg, #fcfaf6, #f4ecdf);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.contact-list {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 1rem;
+}
+
+.contact-item {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 0.9rem 1rem;
+    background: rgba(255, 255, 255, 0.76);
+}
+
+/* ---------- Form styles ---------- */
+form {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border-radius: 16px;
+    border: 1px solid #d6cabd;
+    background: #fffdfa;
+    font: inherit;
+    color: var(--ink);
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    margin-top: 2rem;
+    padding: 2rem 0 3rem;
+}
+
+.footer-shell {
+    background: #2f3a34;
+    color: #f6f1e9;
+    border-radius: 30px;
+    padding: 1.6rem;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 0.9fr;
+    gap: 1.2rem;
+}
+
+.footer a {
+    color: #f6f1e9;
+    text-decoration: none;
+}
+
+.footer-links {
+    display: grid;
+    gap: 0.55rem;
+}
+
+.copyright {
+    color: #d9d3ca;
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+}
+
+/* ---------- Tablet responsive styles ---------- */
+@media (max-width: 980px) {
+    .hero-grid,
+    .split,
+    .contact-wrap,
+    .footer-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grid-4 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ---------- Mobile responsive styles ---------- */
+@media (max-width: 680px) {
+    .nav {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .mini-stats,
+    .grid-3,
+    .grid-4,
+    .gallery-grid,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding-top: 3rem;
+    }
+
+    .photo-frame {
+        aspect-ratio: 4 / 4;
+    }
 }
